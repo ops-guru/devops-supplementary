@@ -3,7 +3,7 @@
 
 ### Create + Build
 ```
-docker run --rm -itd --name my-mvn -v "$(PWD)"/source:/app maven:3.6.2-jdk-8-slim sh
+docker run --rm -itd --name my-mvn -v `pwd`/source:/app maven:3.6.2-jdk-8-slim sh
 docker exec -it my-mvn sh
 cd /app
 mvn archetype:generate -DgroupId=org.examples.java -DartifactId=helloworld -DinteractiveMode=false
