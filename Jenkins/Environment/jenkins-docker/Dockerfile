@@ -14,11 +14,7 @@ RUN wget --no-verbose -O /tmp/apache-maven-3.3.9-bin.tar.gz http://www-eu.apache
     ln -s /opt/maven/bin/mvn /usr/local/bin  && \
     rm -f /tmp/apache-maven-3.3.9-bin.tar.gz
 
-RUN apt-get update && apt-get install -y \
-    docker.io \ 
-    git \
-    vim
-    
+
 ENV MAVEN_HOME /opt/maven
 
 USER jenkins
