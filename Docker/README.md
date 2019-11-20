@@ -42,3 +42,31 @@ docker run --rm -tdi -v "$(pwd)"/source:/app alpine ash
 docker run --rm -tdi --mount type=bind,source="$(pwd)"/source,target=/app alpine ash
 ```
 
+### **Running BootStrap app in a container - Lab**
+```
+docker run --rm -tdi --mount type=bind,source="$(pwd)"/source,target=/app levep79/alpine-oraclejre8 java -jar -Dspring.profiles.active /app/spring-music.jar
+
+docker run --rm -tdi -p 8082:8080 --mount type=bind,source="$(pwd)"/source,target=/app levep79/alpine-oraclejre8 java -jar -Dspring.profiles.active /app/spring-music.jar
+
+```
+### **Networking - Lab**
+```
+docker network ls
+docker run --rm -tdi --name alpine1 alpine ash
+docker run --rm -tdi --name alpine2 alpine ash
+```
+```
+docker network create dmz
+docker network inspect dmz
+docker run -tdi --rm --name network_test --network dmz alpine ash
+docker inspect network_test
+```
+
+```
+docker network alpine-net 
+docker run -tdi --rm --name alpine1 --network alpine-net alpine ash
+docker run -tdi --rm --name alpine2 --network alpine-net alpine ash
+docker run -tdi --rm --name alpine3  alpine ash
+docker run -tdi --rm --name alpine4 --network alpine-net alpine ash
+docker network connect dmz alpine4
+```
