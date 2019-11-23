@@ -1,0 +1,24 @@
+version: '3'
+services:
+  jenkins:
+    build: jenkins-docker/
+    networks:
+      - cicd
+    ports:
+      - "50000:50000"
+      - "8080:8080"
+    volumes:
+      - jenkins_home:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock
+  mailhog:
+    image: "mailhog/mailhog"
+    networks:
+      - cicd
+    ports:
+      - "1025:1025"
+      - "8025:8025"
+networks:
+  cicd:
+    driver: bridge
+volumes:
+  jenkins_home:
