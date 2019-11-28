@@ -4,7 +4,7 @@ node {
     }
     stage('stage 2') {
 		echo 'We are at stage 2'
-		dir('newDir') {
+		dir('my-dir') {
             sh 'pwd'
         }
     }
