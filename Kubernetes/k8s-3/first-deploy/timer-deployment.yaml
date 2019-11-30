@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: time-tracker
+  labels:
+    app: time-tracker
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: time-tracker
+  template:
+    metadata:
+      labels:
+        app: time-tracker
+    spec:
+      containers:
+      - name: time-tracker
+        image: levep79/time-tracker:1
+        ports:
+        - containerPort: 8080
