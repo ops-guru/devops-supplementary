@@ -10,7 +10,7 @@
 
     kubectl create -f kuard-pod.yaml
 
-    kubectl port-forward kuard 8080:8080
+    kubectl port-forward  --address 0.0.0.0 kuard  8080:8080
 
     kubectl exec kuard date
 
