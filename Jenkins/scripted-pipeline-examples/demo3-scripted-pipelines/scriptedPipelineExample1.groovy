@@ -7,7 +7,7 @@ node {
     }
   } catch (NullPointerException e) {
     error 'broken pipeline - null pointer exception'
-    currentBuild.result = 'FAILURE'
-    //currentBuild.result = 'UNSTABLE'
+    // currentBuild.result = 'FAILURE'
+    currentBuild.result = 'UNSTABLE'
   }
 }
