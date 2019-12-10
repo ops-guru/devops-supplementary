@@ -10,7 +10,7 @@ pipeline {
     stages {
         stage('Non-Sequential Stage') {
             agent {
-                label 'for-non-sequential'
+                docker 'levep79/jdk-alpine'
             }
             steps {
                 echo "On Non-Sequential Stage"
@@ -18,7 +18,7 @@ pipeline {
         }
         stage('Sequential') {
             agent {
-                label 'for-sequential'
+                docker 'maven:3.5-alpine'
             }
             environment {
                 FOR_SEQUENTIAL = "some-value"

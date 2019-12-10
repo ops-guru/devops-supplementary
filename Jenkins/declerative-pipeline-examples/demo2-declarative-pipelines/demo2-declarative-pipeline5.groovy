@@ -16,7 +16,7 @@ pipeline {
         }
         stage('Example Deploy') {
             agent {
-                docker 'maven:3-alpine'
+                docker 'maven:3.5-alpine'
             }
             when {
                 beforeAgent true
