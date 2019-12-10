@@ -2,14 +2,13 @@
 // depending on the given condition. The when directive must contain at least one condition. 
 // If the when directive contains more than one condition, all the child conditions must return
 // true for the stage to execute.
-
+// Create multibranch
 pipeline {
     agent any
     stages {
         stage('Example Build') {
             steps {
                 echo 'Hello World'
-                git 'https://github.com/lev-tmp/jenkins2-course-spring-petclinic.git'
             }
         }
         stage('Example Deploy') {
