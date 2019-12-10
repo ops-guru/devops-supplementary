@@ -3,7 +3,7 @@ pipeline {
         stage ('Git Checkout') {
           steps {
             gitCheckout(
-                branch: "master"
+                branch: "master",
                 url: "https://github.com/lev-tmp/jenkins2-course-spring-petclinic.git"
             )}
         }
