@@ -9,6 +9,7 @@ pipeline {
         stage('Example Build') {
             steps {
                 echo 'Hello World'
+                git 'https://github.com/lev-tmp/jenkins2-course-spring-petclinic.git'
             }
         }
         stage('Example Deploy') {
