@@ -1,5 +1,9 @@
 pipeline {
-    agent none
+
+    agent {
+        docker 'levep79/jdk-alpine'
+    }
+    
     stages {
         stage('Example Build') {
             steps {
@@ -8,14 +12,15 @@ pipeline {
         }
         stage('Example Deploy') {
             when {
-                beforeOptions true
-                branch 'testing'
+                beforeInput true
+                branch 'master'
             }
-            options {
-                lock label: 'testing-deploy-envs', quantity: 1, variable: 'deploy-env'
+            input {
+                message "Deploy to production?"
+                id "simple-input"
             }
             steps {
-                echo "Deploying to ${deploy-env}"
+                echo 'Deploying'
             }
         }
     }

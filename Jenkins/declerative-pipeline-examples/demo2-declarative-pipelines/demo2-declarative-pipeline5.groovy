@@ -1,5 +1,13 @@
+
+/*********
+Multiple job example
+Do not run on pipline job didn't work
+**********/
+
 pipeline {
-    agent none
+    agent {
+        docker 'levep79/jdk-alpine'
+    }
     stages {
         stage('Example Build') {
             steps {
@@ -7,8 +15,12 @@ pipeline {
             }
         }
         stage('Example Deploy') {
+            agent {
+                docker 'maven:3-alpine'
+            }
             when {
-                triggeredBy "TimerTrigger"
+                beforeAgent true
+                branch 'master'
             }
             steps {
                 echo 'Deploying'
