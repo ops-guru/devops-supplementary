@@ -1,5 +1,7 @@
 pipeline {
-    agent none
+    agent {
+        docker 'levep79/jdk-alpine'
+    }
     stages {
         stage('Example Build') {
             steps {
@@ -8,11 +10,11 @@ pipeline {
         }
         stage('Example Deploy') {
             agent {
-                label "some-label"
+                docker 'maven:3-alpine'
             }
             when {
                 beforeAgent true
-                branch 'production'
+                branch 'master'
             }
             steps {
                 echo 'Deploying'
