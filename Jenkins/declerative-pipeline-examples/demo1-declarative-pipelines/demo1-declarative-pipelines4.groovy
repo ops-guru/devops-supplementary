@@ -10,6 +10,7 @@ pipeline {
             steps {
                 sh 'mvn clean package'
                 junit '**/target/surefire-reports/TEST-*.xml'
+                sh 'sleep 3h'
                 archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
             }
         }
