@@ -1,12 +1,12 @@
-$ kubectl apply -f kuard-rs.yaml
+microk8s.kubectl apply -f kuard-rs.yaml
 
-$ kubectl get pods
+microk8s.kubectl get pods
 
-$ kubectl describe rs kuard
+microk8s.kubectl describe rs kuard
 
-$ kubectl get pods <pod-name> -o yaml
+microk8s.kubectl get pods <pod-name> -o yaml
 
-$ kubectl get pods -l app=kuard,version=2
+microk8s.kubectl get pods -l app=kuard,version=2
 
 
 Scaling ReplicaSets
@@ -15,7 +15,7 @@ Scaling ReplicaSets
     are submitted to the Kubernetes API using the Pod template defined on the
     ReplicaSet.
 
-    $ kubectl scale kuard --replicas=4
+    microk8s.kubectl scale kuard --replicas=4
 
 
     Declaratively Scaling with kubectl apply
@@ -28,7 +28,7 @@ Scaling ReplicaSets
         replicas: 3
         ...
 
-        $ kubectl apply -f kuard-rs.yaml
+        microk8s.kubectl apply -f kuard-rs.yaml
 
     horizontal pod autoscaling (HPA) :
 
@@ -39,23 +39,23 @@ Scaling ReplicaSets
         static amount of memory.
         To scale a ReplicaSet, you can run a command like the following:
 
-        $ kubectl autoscale rs kuard --min=2 --max=5 --cpu-percent=80
+        microk8s.kubectl autoscale rs kuard --min=2 --max=5 --cpu-percent=80
 
         This command creates an autoscaler that scales between two and five replicas with a
         CPU threshold of 80%. To view, modify, or delete this resource you can use the
         standard kubectl commands and the horizontalpodautoscalers resource.
         horizontalpodautoscalers is quite a bit to type, but it can be shortened to hpa:
 
-        $ kubectl get hpa
+        microk8s.kubectl get hpa
 
     Deleting ReplicaSets
 
-        $ kubectl delete rs kuard
+        microk8s.kubectl delete rs kuard
 
         If you don’t want to delete the Pods that are being managed by the ReplicaSet you
         can set the --cascade flag to false to ensure only the ReplicaSet object is deleted
         and not the Pods:
 
-        $ kubectl delete rs kuard --cascade=false
+        microk8s.kubectl delete rs kuard --cascade=false
 
         

@@ -1,19 +1,3 @@
-Cluster components
-==================
-
-
-kubectl get namespaces
-
-kubectl get pods --namespace=kube-system
-
-kubectl get deployments --namespace=kube-system
-
-kubectl get daemonset --namespace=kube-system
-
-kubectl get services --namespace=kube-system
-
-* Use : kubectl describe , to investingate more about this objects !
-
 Common kubectl Commands
 =======================
 
@@ -32,12 +16,12 @@ Contexts
     authenticate to your cluster. For example, you can create a context with a different
     default namespace for your kubectl commands using:
 
-        $ kubectl config set-context my-context --namespace=mystuff
+        microk8s.kubectl config set-context my-context --namespace=mystuff
 
     This creates a new context, but it doesn’t actually start using it yet. To use this newly
     created context, you can run:
 
-        $ kubectl config use-context my-context
+        microk8s.kubectl config use-context my-context
 
 Viewing Kubernetes API Objects
 
@@ -70,7 +54,7 @@ Viewing Kubernetes API Objects
     details of JSONPath are beyond the scope of this chapter, but as an example, this
     command will extract and print the IP address of the pod:
 
-        $ kubectl get pods my-pod -o jsonpath --template={.status.podIP}
+        microk8s.kubectl get pods my-pod -o jsonpath --template={.status.podIP}
 
 
 Creating, Updating, and Destroying Kubernetes
@@ -83,48 +67,48 @@ Creating, Updating, and Destroying Kubernetes
     Let’s assume that you have a simple object stored in obj.yaml. You can use kubectl
     to create this object in Kubernetes by running:
 
-        $ kubectl apply -f obj.yaml
+        microk8s.kubectl apply -f obj.yaml
 
     Notice that you don’t need to specify the resource type of the object; it’s obtained
     from the object file itself.
     Similarly, after you make changes to the object, you can use the apply command
     again to update the object:
 
-        $ kubectl apply -f obj.yaml
+        microk8s.kubectl apply -f obj.yaml
 
     Interactive edit :
 
-        $ kubectl edit <resource-name> <obj-name>
+        microk8s.kubectl edit <resource-name> <obj-name>
 
     Delete :
 
-            $ kubectl delete -f obj.yaml
+            microk8s.kubectl delete -f obj.yaml
 
         But it is important to note that kubectl will not prompt you to confirm the delete.
         Once you issue the command, the object will be deleted.
         Likewise, you can delete an object using the resource type and name:
 
-            $ kubectl delete <resource-name> <obj-name>
+            microk8s.kubectl delete <resource-name> <obj-name>
 
     Labeling :
 
-            $ kubectl label pods bar color=red
+            microk8s.kubectl label pods bar color=red
 
         By default, label and annotate will not let you overwrite an existing label. To do
         this, you need to add the --overwrite flag.
         If you want to remove a label, you can use the -<label-name> syntax:
 
-            $ kubectl label pods bar -color
+            microk8s.kubectl label pods bar -color
     
     Debugging Commands :
 
-        $ kubectl logs <pod-name>
+        microk8s.kubectl logs <pod-name>
 
-        $ kubectl exec -it <pod-name> -- bash
+        microk8s.kubectl exec -it <pod-name> -- bash
 
-        $ kubectl cp <pod-name>:/path/to/remote/file /path/to/local/file
+        microk8s.kubectl cp <pod-name>:/path/to/remote/file /path/to/local/file
 
 
-        $ kubectl help
+        microk8s.kubectl help
             or:
-        $ kubectl help command-name
+        microk8s.kubectl help command-name

@@ -1,8 +1,8 @@
-$ kubectl apply -f fluentd.yaml
+microk8s.kubectl apply -f fluentd.yaml
 
-$ kubectl describe daemonset fluentd
+microk8s.kubectl describe daemonset fluentd
 
-$ kubectl get pods -o wide
+microk8s.kubectl get pods -o wide
 
 Limiting DaemonSets to Specific Nodes
     The most common use case for DaemonSets is to run a Pod across every node in a
@@ -17,11 +17,11 @@ Limiting DaemonSets to Specific Nodes
     command.
     The following command adds the ssd=true label to a single node:
 
-    $ kubectl label nodes k0-default-pool-35609c18-z7tb ssd=true
+    microk8s.kubectl label nodes k0-default-pool-35609c18-z7tb ssd=true
 
-    $ kubectl apply -f nginx-fast-storage.yaml
+    microk8s.kubectl apply -f nginx-fast-storage.yaml
 
-    $ kubectl get pods -o wide
+    microk8s.kubectl get pods -o wide
 
 Updating a DaemonSet
 

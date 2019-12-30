@@ -1,28 +1,29 @@
 ==Creating a Pod (deployment)==
 
-    kubectl run kuard --image=gcr.io/kuar-demo/kuard-amd64:1
 
-    kubectl get pods
+    microk8s.kubectl get pods
 
-    kubectl delete deployments/kuard
+    microk8s.kubectl run kuard --image=gcr.io/kuar-demo/kuard-amd64:1
+
+    microk8s.kubectl delete deployments/kuard
 
 ==From yaml==
 
-    kubectl create -f kuard-pod.yaml
+    microk8s.kubectl create -f kuard-pod.yaml
 
-    kubectl port-forward  --address 0.0.0.0 kuard  8080:8080
+    microk8s.kubectlport-forward  --address 0.0.0.0 kuard  8080:8080
 
-    kubectl exec kuard date
+    microk8s.kubectl exec kuard date
 
-    kubectl exec -it kuard ash
+    microk8s.kubectl exec -it kuard ash
 
-    kubectl cp <pod-name>:/captures/capture3.txt ./capture3.txt
+    microk8s.kubectl cp <pod-name>:/captures/capture3.txt ./capture3.txt
 
-    kubectl cp $HOME/config.txt <pod-name>:/config.txt
+    microk8s.kubectl cp $HOME/config.txt <pod-name>:/config.txt
 
 ==Pod with health check==
 
-kubectl create -f kuard-pod-health.yaml
+microk8s.kubectl create -f kuard-pod-health.yaml
 
     # Details of the restart can be found with kubectl describe kuard.
 
@@ -80,22 +81,22 @@ kubectl create -f kuard-pod-health.yaml
 
 == Labels ==
 
-kubectl run alpaca-prod --image=gcr.io/kuar-demo/kuard-amd64:1 --replicas=2 --labels="ver=1,app=alpaca,env=prod"
-kubectl run alpaca-test --image=gcr.io/kuar-demo/kuard-amd64:2 --replicas=1 --labels="ver=2,app=alpaca,env=test"
+microk8s.kubectl run alpaca-prod --image=gcr.io/kuar-demo/kuard-amd64:1 --replicas=2 --labels="ver=1,app=alpaca,env=prod"
+microk8s.kubectl run alpaca-test --image=gcr.io/kuar-demo/kuard-amd64:2 --replicas=1 --labels="ver=2,app=alpaca,env=test"
 
-kubectl run bandicoot-prod --image=gcr.io/kuar-demo/kuard-amd64:2 --replicas=2 --labels="ver=2,app=bandicoot,env=prod"
-kubectl run bandicoot-staging --image=gcr.io/kuar-demo/kuard-amd64:2 --replicas=1 --labels="ver=2,app=bandicoot,env=staging"
+microk8s.kubectl run bandicoot-prod --image=gcr.io/kuar-demo/kuard-amd64:2 --replicas=2 --labels="ver=2,app=bandicoot,env=prod"
+microk8s.kubectl run bandicoot-staging --image=gcr.io/kuar-demo/kuard-amd64:2 --replicas=1 --labels="ver=2,app=bandicoot,env=staging"
 
-kubectl get deployments --show-labels
-kubectl label deployments alpaca-test "canary=true"
-kubectl get deployments -L canary
-kubectl label deployments alpaca-test "canary-"  # Remove label
-kubectl get pods --show-labels
-kubectl get pods --selector="ver=2"
-kubectl get pods --selector="app=bandicoot,ver=2"
-kubectl get pods --selector="app in (alpaca,bandicoot)"
-kubectl get deployments --selector="canary"
+microk8s.kubectl get deployments --show-labels
+microk8s.kubectl label deployments alpaca-test "canary=true"
+microk8s.kubectl get deployments -L canary
+microk8s.kubectl label deployments alpaca-test "canary-"  # Remove label
+microk8s.kubectl get pods --show-labels
+microk8s.kubectl get pods --selector="ver=2"
+microk8s.kubectl get pods --selector="app=bandicoot,ver=2"
+microk8s.kubectl get pods --selector="app in (alpaca,bandicoot)"
+microk8s.kubectl get deployments --selector="canary"
 
 == Cleanup ==
 
-kubectl delete deployments --all
+microk8s.kubectl delete deployments --all
