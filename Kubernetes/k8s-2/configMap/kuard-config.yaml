@@ -28,5 +28,5 @@ spec:
   volumes:
     - name: config-volume
       configMap:
-        name: my- 
+        name: my-config
   restartPolicy: Never
