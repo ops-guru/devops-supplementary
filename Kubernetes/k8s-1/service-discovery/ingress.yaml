@@ -8,11 +8,11 @@ spec:
   rules:
   - http:
       paths:
-        - path: /
+        - path: /alpaca
           backend:
-            serviceName: alpaca
+            serviceName: alpaca-prod
             servicePort: 8080
-        - path: /
+        - path: /bandicoot
           backend:
-            serviceName: alpaca
+            serviceName: bandicoot-prod
             servicePort: 8080
