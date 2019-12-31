@@ -7,7 +7,7 @@ spec:
     - image: gcr.io/kuar-demo/kuard-amd64:1
       name: kuard
       resources:
-        requests:
+        limits:
           cpu: "300m"
           memory: "256Mi"
       ports:

@@ -1,17 +1,6 @@
-==Creating a Pod (deployment)==
-
-
-    microk8s.kubectl get pods
-
-    microk8s.kubectl run kuard --image=gcr.io/kuar-demo/kuard-amd64:1
-
-    microk8s.kubectl delete deployments/kuard
-
-==From yaml==
-
     microk8s.kubectl create -f kuard-pod.yaml
 
-    microk8s.kubectlport-forward  --address 0.0.0.0 kuard  8080:8080
+    microk8s.kubectl port-forward  --address 0.0.0.0 kuard  8080:8080
 
     microk8s.kubectl exec kuard date
 
