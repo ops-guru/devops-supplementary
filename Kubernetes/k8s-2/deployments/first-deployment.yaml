@@ -11,7 +11,7 @@ spec:
     metadata:
       labels:
         run: kuard
-  spec:
-    containers:
-    - name: kuard
-      image: gcr.io/kuar-demo/kuard-amd64:blue
+    spec:
+      containers:
+      - name: kuard
+        image: gcr.io/kuar-demo/kuard-amd64:blue
