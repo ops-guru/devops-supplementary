@@ -5,7 +5,7 @@ metadata:
 spec:
   selector:
     matchLabels:
-      run: ic
+      app: ic
   replicas: 1
   template:
     metadata:
