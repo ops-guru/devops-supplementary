@@ -1,19 +1,25 @@
 apiVersion: apps/v1
 kind: DaemonSet
 metadata:
-  name: fluentd
+  name: fluentd-elasticsearch
   namespace: kube-system
   labels:
-    app: fluentd
+    k8s-app: fluentd-logging
 spec:
+  selector:
+    matchLabels:
+      name: fluentd-elasticsearch
   template:
     metadata:
       labels:
-        app: fluentd
+        name: fluentd-elasticsearch
     spec:
+      tolerations:
+      - key: node-role.kubernetes.io/master
+        effect: NoSchedule
       containers:
-      - name: fluentd
-        image: fluent/fluentd:v0.14.10
+      - name: fluentd-elasticsearch
+        image: quay.io/fluentd_elasticsearch/fluentd:v2.5.2
         resources:
           limits:
             memory: 200Mi
