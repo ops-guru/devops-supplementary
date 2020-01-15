@@ -3,10 +3,14 @@ kind: Deployment
 metadata:
   name: ic-deploy
 spec:
-  replicas: 1
   selector:
     matchLabels:
-      app: ic
+      run: ic
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: ic
     spec:
       initContainers:
       - name: msginit
