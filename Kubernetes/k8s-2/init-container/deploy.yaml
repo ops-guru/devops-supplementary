@@ -4,10 +4,9 @@ metadata:
   name: ic-deploy
 spec:
   replicas: 1
-  template:
-    metadata:
-      labels:
-        app: ic
+  selector:
+    matchLabels:
+      app: ic
     spec:
       initContainers:
       - name: msginit
