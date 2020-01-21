@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ printf "%s-%s" .Release.Name .Chart.Name | trunc 63 }}
+spec:
+  selector:
+    matchLabels:
+      app: {{ printf "%s-%s" .Release.Name .Chart.Name | trunc 63 }}
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: {{ printf "%s-%s" .Release.Name .Chart.Name | trunc 63 }}
+        version: {{ .Chart.Version }}
+        release: {{ .Release.Name }}
+    spec:
+      containers:
+        - name: hello-world
+          image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+          ports:
+            - containerPort: 8080
+              protocol: TCP
