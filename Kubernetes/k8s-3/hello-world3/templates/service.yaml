@@ -13,4 +13,4 @@ spec:
     targetPort: 8080
     protocol: TCP
   selector:
-    app: app: {{ printf "%s-%s" .Release.Name .Chart.Name | trunc 63 }}
+    app: {{ printf "%s-%s" .Release.Name .Chart.Name | trunc 63 }}
