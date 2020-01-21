@@ -5,7 +5,7 @@ metadata:
 spec:
   selector:
     matchLabels:
-      {{- include "hello-world.release_labels" . | indent 4 }}
+      {{- include "hello-world.release_labels" . | indent 8 }}
   replicas: 1
   template:
     metadata:
