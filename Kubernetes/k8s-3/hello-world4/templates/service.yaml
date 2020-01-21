@@ -11,4 +11,4 @@ spec:
     targetPort: 8080
     protocol: TCP
   selector:
-    app: { template "hello-world.full_name" . }}
+    app: {{ template "hello-world.full_name" . }}
