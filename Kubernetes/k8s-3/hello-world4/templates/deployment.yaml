@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ template "hello-world.full_name" . }}
+spec:
+  selector:
+    matchLabels:
+      {{- include "hello-world.release_labels" . | indent 4 }}
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        {{- include "hello-world.release_labels" . | indent 8 }}
+    spec:
+      containers:
+        - name: hello-world
+          image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+          ports:
+            - containerPort: 8080
+              protocol: TCP
